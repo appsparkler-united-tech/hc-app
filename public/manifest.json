@@ -83,10 +83,16 @@
     "client_mode": "auto"
   },
   "file_handlers": [],
+  "prefer_related_applications": false,
   "related_applications": [],
   "protocol_handlers": [],
   "scope": "https://heartful-communication.netlify.app",
   "scope_extensions": [],
-  "shortcuts": [],
+  "shortcuts": [
+    {
+      "name": "HC",
+      "url": "/"
+    }
+  ],
   "widgets": []
 }
