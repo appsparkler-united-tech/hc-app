@@ -19,7 +19,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://appsparkler.github.io/apps/hc-app/",
+  "start_url": "https://heartful-communication.netlify.app",
   "display": "fullscreen",
   "theme_color": "#ed6679",
   "background_color": "#ed6679",
