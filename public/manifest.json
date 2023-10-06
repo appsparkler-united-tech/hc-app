@@ -82,5 +82,11 @@
   "launch_handler": {
     "client_mode": "auto"
   },
-  "file_handlers": []
+  "file_handlers": [],
+  "related_applications": [],
+  "protocol_handlers": [],
+  "scope": "https://heartful-communication.netlify.app",
+  "scope_extensions": [],
+  "shortcuts": [],
+  "widgets": []
 }
