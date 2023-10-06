@@ -1,1 +1,1 @@
-export const hcApp = "Heartful Communication"; // :)
+import "./index.css";
