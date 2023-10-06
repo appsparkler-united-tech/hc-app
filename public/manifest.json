@@ -77,5 +77,9 @@
   "edge_side_panel": {
     "preferred_width": 400
   },
-  "handle_links": "auto"
+  "handle_links": "auto",
+  "id": "hc-app",
+  "launch_handler": {
+    "client_mode": "auto"
+  }
 }
