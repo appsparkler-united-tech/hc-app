@@ -81,5 +81,6 @@
   "id": "hc-app",
   "launch_handler": {
     "client_mode": "auto"
-  }
+  },
+  "file_handlers": []
 }
