@@ -76,5 +76,8 @@
   ],
   "share_target": {
     "method": "GET"
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
   }
 }
