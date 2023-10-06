@@ -27,10 +27,7 @@
   "dir": "ltr",
   "lang": "en",
   "orientation": "portrait",
-  "display_override": [
-    "window-controls-overlay",
-    "fullscreen"
-  ],
+  "display_override": ["window-controls-overlay", "fullscreen"],
   "categories": [
     "books",
     "education",
@@ -79,5 +76,6 @@
   },
   "edge_side_panel": {
     "preferred_width": 400
-  }
+  },
+  "handle_links": "auto"
 }
