@@ -1,12 +1,8 @@
-[
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "app.netlify.heartful_communication.twa",
-      "sha256_cert_fingerprints": [
-        "21:12:88:8A:23:CF:C0:FF:BE:37:C7:95:0E:84:CF:9D:F1:31:07:D0:D9:66:B9:DA:72:8E:E3:CB:CB:6C:42:2C"
-      ]
-    }
-  }
-]
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.heartful_communication.twa",
+        "sha256_cert_fingerprints": ["A0:F5:F9:B6:A9:DC:50:ED:E9:21:DD:36:DE:DF:9E:DC:39:84:7A:84:45:4F:7B:2E:C8:2B:0E:87:76:D4:13:66"]
+      }
+    }]
