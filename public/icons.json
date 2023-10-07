@@ -1,6 +1,4 @@
 {
-  "short_name": "HC App",
-  "name": "Heartful Communication",
   "icons": [
     {
       "src": "windows11/SmallTile.scale-100.png",
@@ -450,79 +448,5 @@
       "src": "ios/1024.png",
       "sizes": "1024x1024"
     }
-  ],
-  "start_url": "https://heartful-communication.netlify.app",
-  "display": "standalone",
-  "theme_color": "#ed6679",
-  "background_color": "#ffffff",
-  "description": "This is a Heartful Communication app.  The philosophy is a hybrid of Non Violent Communication and Heartfulness.",
-  "dir": "ltr",
-  "lang": "en",
-  "orientation": "portrait",
-  "display_override": ["window-controls-overlay", "fullscreen"],
-  "categories": [
-    "books",
-    "education",
-    "entertainment",
-    "fitness",
-    "health",
-    "lifestyle",
-    "productivity",
-    "social",
-    "utilities"
-  ],
-  "screenshots": [
-    {
-      "src": "screenshots/screen_1.png",
-      "sizes": "1260X2415",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Select you mood 👍 or 👎"
-    },
-    {
-      "src": "screenshots/screen_4.png",
-      "sizes": "1260X2415",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Select your feelings"
-    },
-    {
-      "src": "screenshots/screen_3.png",
-      "sizes": "1260X2415",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Select which need is met or unmet"
-    },
-    {
-      "src": "screenshots/screen_2.png",
-      "sizes": "1260X2415",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "communicate with your loved ones"
-    }
-  ],
-  "share_target": {
-    "method": "GET"
-  },
-  "edge_side_panel": {
-    "preferred_width": 400
-  },
-  "handle_links": "auto",
-  "id": "hc-app",
-  "launch_handler": {
-    "client_mode": "auto"
-  },
-  "file_handlers": [],
-  "prefer_related_applications": false,
-  "related_applications": [],
-  "protocol_handlers": [],
-  "scope": "https://heartful-communication.netlify.app",
-  "scope_extensions": [],
-  "shortcuts": [
-    {
-      "name": "HC",
-      "url": "/"
-    }
-  ],
-  "widgets": []
+  ]
 }
