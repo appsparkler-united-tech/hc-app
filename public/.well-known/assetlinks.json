@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "app.netlify.heartful_communication.twa",
-        "sha256_cert_fingerprints": ["A0:F5:F9:B6:A9:DC:50:ED:E9:21:DD:36:DE:DF:9E:DC:39:84:7A:84:45:4F:7B:2E:C8:2B:0E:87:76:D4:13:66"]
+        "sha256_cert_fingerprints": ["24:D5:07:34:42:36:FC:1E:B8:B5:87:DF:F6:3E:CA:B5:99:38:38:AC:9D:56:78:40:17:52:56:94:E0:E1:A2:9C"]
       }
     }]
