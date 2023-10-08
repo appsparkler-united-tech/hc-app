@@ -1,8 +1,22 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "app.netlify.heartful_communication.twa",
-        "sha256_cert_fingerprints": ["24:D5:07:34:42:36:FC:1E:B8:B5:87:DF:F6:3E:CA:B5:99:38:38:AC:9D:56:78:40:17:52:56:94:E0:E1:A2:9C"]
-      }
-    }]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.netlify.heartful_communication.twa",
+      "sha256_cert_fingerprints": [
+        "24:D5:07:34:42:36:FC:1E:B8:B5:87:DF:F6:3E:CA:B5:99:38:38:AC:9D:56:78:40:17:52:56:94:E0:E1:A2:9C"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.netlify.next_release__heartful_communication.twa",
+      "sha256_cert_fingerprints": [
+        "85:7C:C6:9C:9A:3A:57:35:5C:51:C2:FA:4C:65:4C:99:96:AB:CA:B6:6E:A8:22:9B:DD:98:5C:3B:B8:6F:77:DF"
+      ]
+    }
+  }
+]
