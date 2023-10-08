@@ -10,4 +10,5 @@ https://heartful-communication.netlify.app
 
 ## Steps for deployment
 
--[ ] Update URL in `manifest.json` to https://heartful-communication.netlify.app for example -[ ] Update `/public/.well-known/assetlinks.json` with the correct configuration
+- [ ] Update URL in `manifest.json` to https://heartful-communication.netlify.app for example
+- [ ] Update `/public/.well-known/assetlinks.json` with the correct configuration
