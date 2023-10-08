@@ -451,7 +451,7 @@
       "sizes": "1024x1024"
     }
   ],
-  "start_url": "https://next-release--heartful-communication.netlify.app",
+  "start_url": "https://heartful-communication.netlify.app",
   "display": "standalone",
   "theme_color": "#ed6679",
   "background_color": "#ffffff",
@@ -516,7 +516,7 @@
   "prefer_related_applications": false,
   "related_applications": [],
   "protocol_handlers": [],
-  "scope": "https://next-release--heartful-communication.netlify.app",
+  "scope": "https://heartful-communication.netlify.app",
   "scope_extensions": [],
   "shortcuts": [
     {
