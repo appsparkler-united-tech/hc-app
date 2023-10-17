@@ -3,6 +3,16 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
+      "package_name": "com.appsparkler.hc.twa",
+      "sha256_cert_fingerprints": [
+        "60:7A:AE:0B:E0:B3:E4:F4:97:BE:47:E0:29:30:37:19:21:A9:4D:A8:3D:C4:AD:B2:33:C0:3A:10:63:49:D1:5D"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
       "package_name": "app.netlify.heartful_communication.twa",
       "sha256_cert_fingerprints": [
         "24:D5:07:34:42:36:FC:1E:B8:B5:87:DF:F6:3E:CA:B5:99:38:38:AC:9D:56:78:40:17:52:56:94:E0:E1:A2:9C"
