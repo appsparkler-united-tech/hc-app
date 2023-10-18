@@ -459,7 +459,7 @@
   "description": "This is a Heartful Communication app.  The philosophy is a hybrid of Non Violent Communication and Heartfulness.",
   "dir": "ltr",
   "lang": "en",
-  "orientation": "portrait",
+  "orientation": "any",
   "display_override": ["window-controls-overlay", "fullscreen"],
   "categories": [
     "books",
