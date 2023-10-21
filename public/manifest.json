@@ -1,6 +1,6 @@
 {
   "short_name": "HC App",
-  "package": "com.appsparkler.hc.twa",
+  "package": "app.netlify.next_release__heartful_communication.twa",
   "name": "Heartful Communication",
   "icons": [
     {
