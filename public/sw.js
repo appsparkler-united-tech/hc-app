@@ -1,54 +1,33 @@
-// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
-
-const CACHE = "pwabuilder-offline-page";
-
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-
-// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
-const offlineFallbackPage = "index.html";
-
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
+if ("serviceWorker" in navigator) {
+  // 1. Register a service worker hosted at the root of the
+  // site using the default scope.
+  navigator.serviceWorker
+    .register("/sw.js", {
+      scope: "/",
+    })
+    .then((registration) => {
+      // APP.SW =
+      //   registration.installing || registration.waiting || registration.active;
+      console.log("service worker registered");
+    });
+  // 2. See if the page is currently has a service worker.
+  if (navigator.serviceWorker.controller) {
+    console.log("we have a service worker installed");
   }
-});
 
-self.addEventListener('install', async (event) => {
-  event.waitUntil(
-    caches.open(CACHE)
-      .then((cache) => cache.add(offlineFallbackPage))
-  );
-});
+  // 3. Register a handler to detect when a new or
+  // updated service worker is installed & activate.
+  navigator.serviceWorker.oncontrollerchange = (ev) => {
+    console.log("New service worker activated");
+  };
 
-if (workbox.navigationPreload.isSupported()) {
-  workbox.navigationPreload.enable();
+  // 4. remove/unregister service workers
+  // navigator.serviceWorker.getRegistrations().then((regs) => {
+  //   for (let reg of regs) {
+  //     reg.unregister().then((isUnreg) => console.log(isUnreg));
+  //   }
+  // });
+  // 5. Listen for messages from the service worker
+} else {
+  console.log("Service workers are not supported.");
 }
-
-workbox.routing.registerRoute(
-  new RegExp('/*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
-  })
-);
-
-self.addEventListener('fetch', (event) => {
-  if (event.request.mode === 'navigate') {
-    event.respondWith((async () => {
-      try {
-        const preloadResp = await event.preloadResponse;
-
-        if (preloadResp) {
-          return preloadResp;
-        }
-
-        const networkResp = await fetch(event.request);
-        return networkResp;
-      } catch (error) {
-
-        const cache = await caches.open(CACHE);
-        const cachedResp = await cache.match(offlineFallbackPage);
-        return cachedResp;
-      }
-    })());
-  }
-});
