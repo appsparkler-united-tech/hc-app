@@ -12,3 +12,6 @@ https://heartful-communication.netlify.app
 
 - [ ] Update URL in `manifest.json` to https://heartful-communication.netlify.app for example
 - [ ] Update `/public/.well-known/assetlinks.json` with the correct configuration
+- [ ] update `versionCode`. Current `versionCode = 2`
+- [ ] update `versionName`. Current `versionName = 1.0.0.1`
+- [ ] generate package with your `appsparkler` signing-key.
