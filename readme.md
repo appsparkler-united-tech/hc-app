@@ -15,3 +15,8 @@ https://heartful-communication.netlify.app
 - [ ] update `versionCode`. Current `versionCode = 2`
 - [ ] update `versionName`. Current `versionName = 1.0.0.1`
 - [ ] generate package with your `appsparkler` signing-key.
+
+Release Notes
+<en-US>
+An app to communicate heartfully. The principles of Heartful Communication are based on Non Violent Communication pioneered by Marshall Rosenberg.
+</en-US>
