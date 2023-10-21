@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.appsparkler.hc.twa",
+      "package_name": "app.netlify.next_release__heartful_communication.twa",
       "sha256_cert_fingerprints": [
-        "66:6F:5D:EE:3C:DF:C1:B5:0D:FB:C9:4E:DB:C9:17:7D:DC:8F:24:63:EE:91:31:28:BE:E5:F3:B5:A9:19:BD:5B"
+        "6D:A5:DD:5B:3B:CA:83:2D:F3:06:11:36:CD:F8:1F:B6:13:72:8F:D7:A2:15:D3:99:D0:E8:03:C5:C7:AE:52:C8"
       ]
     }
   }
