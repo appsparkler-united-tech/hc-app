@@ -17,6 +17,8 @@ https://heartful-communication.netlify.app
 - [ ] generate package with your `appsparkler` signing-key.
 
 Release Notes
+```xml
 <en-US>
 An app to communicate heartfully. The principles of Heartful Communication are based on Non Violent Communication pioneered by Marshall Rosenberg.
 </en-US>
+```
