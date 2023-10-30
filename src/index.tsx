@@ -1,5 +1,5 @@
 import "./index.css";
-import { driver, Config } from "driver.js";
+import { driver, Config, DriveStep } from "driver.js";
 import "driver.js/dist/driver.css";
 
 const welcomeToHC = {
@@ -8,7 +8,7 @@ const welcomeToHC = {
   popover: {
     title: "Welcome to HC App",
     description:
-      "We hope this app helps you discover your feelings and how they relate to your needs.  Please click next to continue.",
+      "We hope this app helps you discover your feelings and how they relate to your needs.  Please click next to continue.  Anytime you feel lost, click on the tour button.",
   },
 };
 
@@ -79,6 +79,81 @@ const selectOneMoreFeeling = {
   },
 };
 
+const nextButtonToSelectNeeds: DriveStep = {
+  element:
+    "#root > div > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v > div.MuiCardActions-root.MuiCardActions-spacing.css-1b3ea8l > div > button:nth-child(3)",
+  popover: {
+    title: "Go to the next step to select your needs",
+    description:
+      "If you have not selected any feelings; this button will be disabled. If it is enabled, click on it.  Then click 'Next' to continue",
+  },
+};
+
+const needsStepTitle: DriveStep = {
+  element: "#root > div > div.css-1v0xnyz > div > div:nth-child(3) > span",
+  popover: {
+    title: "Needs Step",
+    description:
+      "In this step, you can select the underlying needs that make you feel the way you do.  This is at the core of <a href='https://en.wikipedia.org/wiki/Nonviolent_Communication'>Non Violent Communication</a> and <a href='https://heartfulness.org/hc/'>Heartful Communication</a> that <strong>we feel the way we do because of our needs</strong>",
+  },
+};
+
+const selectNeed1: DriveStep = {
+  element:
+    "div.MuiGrid-grid-sm-6:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > label:nth-child(1)",
+  popover: {
+    title: "Select a need",
+    description:
+      "Click on this need to select it and then click the 'Next' button.",
+  },
+};
+const selectNeed2: DriveStep = {
+  element:
+    "div.MuiGrid-grid-sm-6:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > label",
+  popover: {
+    title: "Select another need",
+    description:
+      "Click on this one too to select it.  Then click the 'Next' button.",
+  },
+};
+
+const nextButtonToCompleteStatement: DriveStep = {
+  element:
+    "div.MuiCardActions-root:nth-child(1) > div:nth-child(1) > button:nth-child(3)",
+  popover: {
+    title: "Go to next step",
+    description:
+      "If you have not selected any needs; this button will be disabled. If it is enabled, click on it.  Then click 'Next' to continue",
+  },
+};
+const enterText: DriveStep = {
+  element:
+    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardContent-root.css-1qw96cp div.css-j7qwjs",
+  popover: {
+    title: "Complete your statement",
+    description:
+      "Once you complete your statement, you can either copy it to clipboard or share it via WhatsApp.",
+  },
+};
+const copyToClipboard: DriveStep = {
+  element:
+    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 div.MuiBox-root.css-1i27l4i button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1xgrsx4:nth-child(2)",
+  popover: {
+    title: "Copy to clipboard",
+    description: "Click to copy to clipboard.  Now, click the 'Next' button.",
+  },
+};
+
+const shareOnWhatsapp: DriveStep = {
+  element:
+    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 div.MuiBox-root.css-1i27l4i button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1xgrsx4:nth-child(3)",
+  popover: {
+    title: "Share on WhatsApp",
+    description:
+      "Click this button to share your feelings on WhatsApp.  Now, click the 'Next' button.",
+  },
+};
+
 const driverConfig: Config = {
   showProgress: true,
   steps: [
@@ -90,6 +165,14 @@ const driverConfig: Config = {
     feelings,
     feelingsList,
     selectOneMoreFeeling,
+    nextButtonToSelectNeeds,
+    needsStepTitle,
+    selectNeed1,
+    selectNeed2,
+    nextButtonToCompleteStatement,
+    enterText,
+    copyToClipboard,
+    shareOnWhatsapp,
   ],
 };
 
