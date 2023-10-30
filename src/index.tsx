@@ -2,14 +2,16 @@ import "./index.css";
 import { driver, Config } from "driver.js";
 import "driver.js/dist/driver.css";
 
-const howAreYou = {
+const welcomeToHC = {
   element:
-    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.css-1v0xnyz div.MuiStepper-root.MuiStepper-horizontal.MuiStepper-alternativeLabel.css-1187icl div.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.css-166ciyp span.MuiStepLabel-root.MuiStepLabel-horizontal.MuiStepLabel-alternativeLabel.css-1abj2s5",
+    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
   popover: {
-    title: "How are you feeling?",
-    description: 'this is the first step.  Click "Next" to continue',
+    title: "Welcome to HC App",
+    description:
+      "We hope this app helps you discover your feelings and how they relate to your needs.  Please click next to continue.  And then click next to continue.",
   },
 };
+
 const fourSteps = {
   element:
     "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.css-1v0xnyz div.MuiStepper-root.MuiStepper-horizontal.MuiStepper-alternativeLabel.css-1187icl",
@@ -18,6 +20,16 @@ const fourSteps = {
     description: `These are the 4 steps in the app which will help you understand your feelings with respect to your needs.`,
   },
 };
+
+const howAreYouStep = {
+  element:
+    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.css-1v0xnyz div.MuiStepper-root.MuiStepper-horizontal.MuiStepper-alternativeLabel.css-1187icl div.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.css-166ciyp span.MuiStepLabel-root.MuiStepLabel-horizontal.MuiStepLabel-alternativeLabel.css-1abj2s5",
+  popover: {
+    title: "How are you feeling?",
+    description: 'this is the first step.  Click "Next" to continue',
+  },
+};
+
 const thumbsUpOrDown = {
   element:
     "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardContent-root.css-1qw96cp div.css-1t62lt9",
@@ -27,6 +39,7 @@ const thumbsUpOrDown = {
       "click on thumbs-up if you're feeling good, positive, happy, excited or any of those uplifting feelings else thumbs down.",
   },
 };
+
 const nextButtonToSelectFeelings = {
   element:
     "html body.driver-active.driver-fade div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 div.MuiBox-root.css-1i27l4i button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1xgrsx4:nth-child(2)",
@@ -64,21 +77,12 @@ const selectOneMoreFeeling = {
   },
 };
 
-const welcomeToHC = {
-  element:
-    "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
-  popover: {
-    title: "Welcome to HC App",
-    description:
-      "We hope this app helps you discover your feelings and how they relate to your needs.  Please click next to continue.  And then click next to continue.",
-  },
-};
 const driverConfig: Config = {
   showProgress: true,
   steps: [
     welcomeToHC,
     fourSteps,
-    howAreYou,
+    howAreYouStep,
     thumbsUpOrDown,
     nextButtonToSelectFeelings,
     feelings,
@@ -90,14 +94,3 @@ const driverConfig: Config = {
 const driverObj = driver(driverConfig);
 
 driverObj.drive();
-
-// driverObj.highlight({
-//   element:
-//     "html body.driver-active.driver-fade div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardContent-root",
-//   popover: {
-//     title: "How are you feeling?",
-//     description:
-//       "thumbs-up if you're feeling good, positive, happy, excited or any of those uplifting feelings and  thumbs-down otherwise.",
-//     onNextClick: () => {},
-//   },
-// });
