@@ -2,6 +2,56 @@ import "./index.css";
 import { driver, Config, DriveStep } from "driver.js";
 import "driver.js/dist/driver.css";
 
+const observeDOM = (function () {
+  var MutationObserver = window.MutationObserver;
+
+  return function (
+    obj: HTMLElement,
+    callback: EventListenerOrEventListenerObject | MutationCallback
+  ) {
+    if (!obj || obj.nodeType !== 1) return;
+
+    if (MutationObserver) {
+      // define a new observer
+      var mutationObserver = new MutationObserver(callback as MutationCallback);
+
+      // have the observer observe for changes in children
+      mutationObserver.observe(obj, { childList: true, subtree: true });
+      return mutationObserver;
+    }
+
+    // browser support fallback
+    obj.addEventListener(
+      "DOMNodeInserted",
+      callback as EventListenerOrEventListenerObject,
+      false
+    );
+    obj.addEventListener(
+      "DOMNodeRemoved",
+      callback as EventListenerOrEventListenerObject,
+      false
+    );
+    // else if (window.addEventListener) {
+
+    // }
+  };
+})();
+
+observeDOM(document.body, () => {
+  console.log("changed");
+});
+
+const init = () => {
+  const tourButton = `<button class="tour-button">🚀 Tour</button>`;
+  const tourContainer = document.getElementById("tour-button-container");
+  if (tourContainer) {
+    tourContainer.innerHTML = tourButton;
+  }
+  if (document.querySelector(".tour-button") === null) {
+    document.body.insertAdjacentHTML("beforeend", tourButton);
+  }
+};
+
 const welcomeToHC = {
   element:
     "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
