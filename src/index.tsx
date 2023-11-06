@@ -228,14 +228,14 @@ const beginTour = (config: Config = {}) => {
 
   const driverConfig: Config = {
     showProgress: true,
-    showButtons: [
-      "next",
-      "previous",
-      ...(config.allowClose ? (["close"] as AllowedButtons[]) : []),
-    ],
+    // showButtons: [
+    //   "next",
+    //   "previous",
+    //   // ...(config.allowClose ? (["close"] as AllowedButtons[]) : []),
+    // ],
     steps: [
-      welcomeToHC,
       takeTour,
+      welcomeToHC,
       fourSteps,
       howAreYouStep,
       thumbsUpOrDown,
