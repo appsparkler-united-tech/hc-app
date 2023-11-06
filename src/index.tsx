@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.css";
-import { driver, Config, DriveStep } from "driver.js";
+import { driver, Config, DriveStep, AllowedButtons } from "driver.js";
 import "driver.js/dist/driver.css";
 
 const observeDOM = (function () {
@@ -41,7 +42,9 @@ observeDOM(document.body, () => {
   if (tourContainer !== null) {
     const likeDislikeSVGs = document.querySelectorAll(".css-6flbmm");
     const handleClickTakeTour: (ev: MouseEvent) => any = () => {
-      beginTour();
+      beginTour({
+        allowClose: true,
+      });
     };
     tourContainer.removeEventListener("click", handleClickTakeTour);
     if (likeDislikeSVGs.length >= 2) {
@@ -57,7 +60,9 @@ observeDOM(document.body, () => {
   }
 });
 
-const beginTour = () => {
+const TOUR_DONE_KEY = "TOUR_DONE";
+
+const beginTour = (config: Config = {}) => {
   const welcomeToHC = {
     element:
       "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
@@ -65,6 +70,15 @@ const beginTour = () => {
       title: "Welcome to HC App",
       description:
         "We hope this app helps you discover your feelings and how they relate to your needs.  Please click next to continue.  Anytime you feel lost, click on the tour button.",
+    },
+  };
+
+  const takeTour: DriveStep = {
+    element: ".tour-button",
+    popover: {
+      title: "Take Tour",
+      description:
+        "Anytime you want a tour around, click here.<strong>Don't click now though, since your're already in a tour :)</strong>",
     },
   };
 
@@ -163,6 +177,7 @@ const beginTour = () => {
         "Click on this need to select it and then click the 'Next' button.",
     },
   };
+
   const selectNeed2: DriveStep = {
     element:
       "div.MuiGrid-grid-sm-6:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > label",
@@ -191,6 +206,7 @@ const beginTour = () => {
         "Once you complete your statement, you can either copy it to clipboard or share it via WhatsApp.",
     },
   };
+
   const copyToClipboard: DriveStep = {
     element:
       "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 div.MuiBox-root.css-1i27l4i button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1xgrsx4:nth-child(2)",
@@ -202,18 +218,24 @@ const beginTour = () => {
 
   const shareOnWhatsapp: DriveStep = {
     element:
-      "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 div.MuiBox-root.css-1i27l4i button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1xgrsx4:nth-child(3)",
+      "#root > div > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v > div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 > div > a",
     popover: {
       title: "Share on WhatsApp",
       description:
-        "Click this button to share your feelings on WhatsApp.  Now, click the 'Next' button.",
+        "Click this button to share your feelings on WhatsApp.  Now, click the 'Next' button.  That's about it.  You can click on the 'Done' button to complete the tour.  Thank You!!!",
     },
   };
 
   const driverConfig: Config = {
     showProgress: true,
+    showButtons: [
+      "next",
+      "previous",
+      ...(config.allowClose ? (["close"] as AllowedButtons[]) : []),
+    ],
     steps: [
       welcomeToHC,
+      takeTour,
       fourSteps,
       howAreYouStep,
       thumbsUpOrDown,
@@ -230,6 +252,11 @@ const beginTour = () => {
       copyToClipboard,
       shareOnWhatsapp,
     ],
+    // allowClose: false,
+    onDestroyed: () => {
+      localStorage.setItem(TOUR_DONE_KEY, "true");
+    },
+    ...config,
   };
 
   const driverObj = driver(driverConfig);
@@ -237,6 +264,15 @@ const beginTour = () => {
   driverObj.drive();
 };
 
-const initialize = () => {};
+const initialize = () => {
+  const tourDone = localStorage.getItem(TOUR_DONE_KEY);
+  if (tourDone) {
+  } else {
+    // first tour
+    beginTour({
+      allowClose: false,
+    });
+  }
+};
 
 initialize();
