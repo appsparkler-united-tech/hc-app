@@ -37,14 +37,16 @@ const observeDOM = (function () {
 
 observeDOM(document.body, () => {
   const tourButton = `<button class="tour-button">🚀 Take Tour</button>`;
-  console.log("changed");
   const tourContainer = document.getElementById("tour-button-container");
   if (tourContainer !== null) {
     const likeDislikeSVGs = document.querySelectorAll(".css-6flbmm");
     const handleClickTakeTour: (ev: MouseEvent) => any = () => {
-      beginTour({
-        allowClose: true,
-      });
+      beginTour(
+        {
+          allowClose: true,
+        },
+        false
+      );
     };
     tourContainer.removeEventListener("click", handleClickTakeTour);
     if (likeDislikeSVGs.length >= 2) {
@@ -52,6 +54,7 @@ observeDOM(document.body, () => {
       if (!tourContainerHasInnerHTML) {
         tourContainer.innerHTML = tourButton;
         tourContainer.addEventListener("click", handleClickTakeTour);
+        startFirstTour();
       }
     } else {
       tourContainer.innerHTML = "";
@@ -62,7 +65,7 @@ observeDOM(document.body, () => {
 
 const TOUR_DONE_KEY = "TOUR_DONE";
 
-const beginTour = (config: Config = {}) => {
+const beginTour = (config: Config = {}, newTour: boolean = false) => {
   const welcomeToHC = {
     element:
       "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
@@ -197,22 +200,14 @@ const beginTour = (config: Config = {}) => {
         "If you have not selected any needs; this button will be disabled. If it is enabled, click on it.  Then click 'Next' to continue",
     },
   };
-  const enterText: DriveStep = {
-    element:
-      "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardContent-root.css-1qw96cp div.css-j7qwjs",
-    popover: {
-      title: "Complete your statement",
-      description:
-        "Once you complete your statement, you can either copy it to clipboard or share it via WhatsApp.",
-    },
-  };
 
   const copyToClipboard: DriveStep = {
     element:
       "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1jjdl4v div.MuiCardActions-root.MuiCardActions-spacing.css-1xf6bf9 div.MuiBox-root.css-1i27l4i button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1xgrsx4:nth-child(2)",
     popover: {
       title: "Copy to clipboard",
-      description: "Click to copy to clipboard.  Now, click the 'Next' button.",
+      description:
+        "After you complete the statement below, you can click this button to copy to clipboard.  Now, click the 'Next' button.",
     },
   };
 
@@ -222,19 +217,14 @@ const beginTour = (config: Config = {}) => {
     popover: {
       title: "Share on WhatsApp",
       description:
-        "Click this button to share your feelings on WhatsApp.  Now, click the 'Next' button.  That's about it.  You can click on the 'Done' button to complete the tour.  Thank You!!!",
+        "Click this button to share your feelings on WhatsApp.  That's about it.  You can click on the 'Done' button to complete the tour.  Thank You!!!",
     },
   };
 
   const driverConfig: Config = {
     showProgress: true,
-    // showButtons: [
-    //   "next",
-    //   "previous",
-    //   // ...(config.allowClose ? (["close"] as AllowedButtons[]) : []),
-    // ],
     steps: [
-      takeTour,
+      ...(newTour ? [takeTour] : []),
       welcomeToHC,
       fourSteps,
       howAreYouStep,
@@ -248,11 +238,10 @@ const beginTour = (config: Config = {}) => {
       selectNeed1,
       selectNeed2,
       nextButtonToCompleteStatement,
-      enterText,
+      // enterText,
       copyToClipboard,
       shareOnWhatsapp,
     ],
-    // allowClose: false,
     onDestroyed: () => {
       localStorage.setItem(TOUR_DONE_KEY, "true");
     },
@@ -264,15 +253,14 @@ const beginTour = (config: Config = {}) => {
   driverObj.drive();
 };
 
-const initialize = () => {
+const startFirstTour = () => {
+  console.log("starting first tour");
   const tourDone = localStorage.getItem(TOUR_DONE_KEY);
-  if (tourDone) {
-  } else {
-    // first tour
-    beginTour({
+  if (tourDone) return;
+  beginTour(
+    {
       allowClose: false,
-    });
-  }
+    },
+    true
+  );
 };
-
-initialize();
