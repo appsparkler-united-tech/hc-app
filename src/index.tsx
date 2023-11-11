@@ -287,13 +287,4 @@ const startFirstTour = () => {
   const initialTourDone = localStorage.getItem(TOUR_DONE_KEY);
   if (initialTourDone) return;
   startInitialTour();
-  // console.log("starting first tour");
-  // const tourDone = localStorage.getItem(TOUR_DONE_KEY);
-  // if (tourDone) return;
-  // beginTour(
-  //   {
-  //     allowClose: false,
-  //   },
-  //   true
-  // );
 };
