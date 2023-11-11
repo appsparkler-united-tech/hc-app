@@ -3,36 +3,6 @@ import "./index.css";
 import { driver, Config, DriveStep, AllowedButtons } from "driver.js";
 import "driver.js/dist/driver.css";
 
-const startInitialTour = () => {
-  const welcomeToHC = {
-    element:
-      "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
-    popover: {
-      title: "Welcome to HC App",
-      description:
-        "We hope this app helps you discover your feelings and how they relate to your needs and, most importantly, easily be able to express yourself with other people.  Please click next to continue.",
-    },
-  };
-
-  const takeTour: DriveStep = {
-    element: ".tour-button",
-    popover: {
-      title: "Take Tour",
-      description:
-        'Anytime you want a tour around, click on this button.  <br /><br/>Click "Done" to end this introduction tour.  <br /><br />Thank You 🥰',
-    },
-  };
-
-  const dirverConfig: Config = {
-    allowClose: false,
-    showProgress: true,
-    steps: [welcomeToHC, takeTour],
-  };
-
-  const driverInstance = driver(dirverConfig);
-  driverInstance.drive();
-};
-
 const observeDOM = (function () {
   var MutationObserver = window.MutationObserver;
 
@@ -65,13 +35,15 @@ const observeDOM = (function () {
   };
 })();
 
+const TOUR_DONE_KEY = "TOUR_DONE";
+
 observeDOM(document.body, () => {
   const tourButton = `<button class="tour-button">🚀 Take Tour</button>`;
   const tourContainer = document.getElementById("tour-button-container");
   if (tourContainer !== null) {
     const likeDislikeSVGs = document.querySelectorAll(".css-6flbmm");
     const handleClickTakeTour: (ev: MouseEvent) => any = () => {
-      beginTour(
+      startFullTour(
         {
           allowClose: true,
         },
@@ -93,9 +65,42 @@ observeDOM(document.body, () => {
   }
 });
 
-const TOUR_DONE_KEY = "TOUR_DONE";
+const startInitialTour = () => {
+  const welcomeToHC = {
+    element:
+      "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
+    popover: {
+      title: "Welcome to HC App",
+      description:
+        "We hope this app helps you discover your feelings and how they relate to your needs and, most importantly, easily be able to express yourself with other people.  Please click next to continue.",
+    },
+  };
 
-const beginTour = (config: Config = {}, newTour: boolean = false) => {
+  const takeTour: DriveStep = {
+    element: ".tour-button",
+    popover: {
+      title: "Take Tour",
+      description:
+        'Anytime you want a tour around, click on this button.  <br /><br/>Click "Done" to end this introduction tour.  <br /><br />Thank You 🥰',
+    },
+  };
+
+  const handleDestroyed = () => {
+    localStorage.setItem(TOUR_DONE_KEY, "true");
+  };
+
+  const dirverConfig: Config = {
+    allowClose: false,
+    showProgress: true,
+    steps: [welcomeToHC, takeTour],
+    onDestroyed: handleDestroyed,
+  };
+
+  const driverInstance = driver(dirverConfig);
+  driverInstance.drive();
+};
+
+const startFullTour = (config: Config = {}, newTour: boolean = false) => {
   const welcomeToHC = {
     element:
       "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
