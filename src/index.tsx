@@ -3,6 +3,36 @@ import "./index.css";
 import { driver, Config, DriveStep, AllowedButtons } from "driver.js";
 import "driver.js/dist/driver.css";
 
+const startInitialTour = () => {
+  const welcomeToHC = {
+    element:
+      "html body div#root div.MuiContainer-root.MuiContainer-maxWidthXl.css-141bmmb div.MuiBox-root.css-0 h4.MuiTypography-root.MuiTypography-h4.MuiTypography-alignCenter.css-25t8ob",
+    popover: {
+      title: "Welcome to HC App",
+      description:
+        "We hope this app helps you discover your feelings and how they relate to your needs and, most importantly, easily be able to express yourself with other people.  Please click next to continue.",
+    },
+  };
+
+  const takeTour: DriveStep = {
+    element: ".tour-button",
+    popover: {
+      title: "Take Tour",
+      description:
+        'Anytime you want a tour around, click on this button.  <br /><br/>Click "Done" to end this introduction tour.  <br /><br />Thank You 🥰',
+    },
+  };
+
+  const dirverConfig: Config = {
+    allowClose: false,
+    showProgress: true,
+    steps: [welcomeToHC, takeTour],
+  };
+
+  const driverInstance = driver(dirverConfig);
+  driverInstance.drive();
+};
+
 const observeDOM = (function () {
   var MutationObserver = window.MutationObserver;
 
@@ -254,13 +284,16 @@ const beginTour = (config: Config = {}, newTour: boolean = false) => {
 };
 
 const startFirstTour = () => {
-  console.log("starting first tour");
-  const tourDone = localStorage.getItem(TOUR_DONE_KEY);
-  if (tourDone) return;
-  beginTour(
-    {
-      allowClose: false,
-    },
-    true
-  );
+  const initialTourDone = localStorage.getItem(TOUR_DONE_KEY);
+  if (initialTourDone) return;
+  startInitialTour();
+  // console.log("starting first tour");
+  // const tourDone = localStorage.getItem(TOUR_DONE_KEY);
+  // if (tourDone) return;
+  // beginTour(
+  //   {
+  //     allowClose: false,
+  //   },
+  //   true
+  // );
 };
