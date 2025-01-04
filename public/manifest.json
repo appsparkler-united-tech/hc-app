@@ -452,7 +452,7 @@
       "sizes": "1024x1024"
     }
   ],
-  "start_url": "https://hc.appsparkler.com",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#ed6679",
   "background_color": "#ffffff",
@@ -500,11 +500,15 @@
       "type": "image/png",
       "form_factor": "narrow",
       "label": "communicate with your loved ones"
+    },
+    {
+      "src": "screenshots/wide_screen_5.png",
+      "sizes": "2504X1752",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Select you mood 👍 or 👎"
     }
   ],
-  "share_target": {
-    "method": "GET"
-  },
   "edge_side_panel": {
     "preferred_width": 400
   },
@@ -517,12 +521,18 @@
   "prefer_related_applications": false,
   "related_applications": [],
   "protocol_handlers": [],
-  "scope": "https://hc.appsparkler.com",
+  "scope": "/",
   "scope_extensions": [],
   "shortcuts": [
     {
       "name": "HC",
-      "url": "/"
+      "url": "/",
+      "icons": [
+        {
+          "src": "windows11/SmallTile.scale-400.png",
+          "sizes": "284x284"
+        }
+      ]
     }
   ],
   "widgets": []
